@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rowPointInteret"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="5dp">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dip"
+        android:layout_marginTop="5dip"
+        android:maxLines="1"
+        android:text="Nom"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_marginStart="15dip"
+        android:layout_marginLeft="15dip"
+        android:text="description"
+        android:textColor="@android:color/secondary_text_dark"
+        android:textSize="14sp"></TextView>
+
+    <TextView
+        android:id="@+id/startingDate"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="5dip"
+        android:textAlignment="center"
+        android:textColor="@android:color/secondary_text_dark"
+        android:textSize="14sp"
+        tools:text="@tools:sample/date/ddmmyy"></TextView>
+
+    <TextView
+        android:id="@+id/endingDate"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="25dip"
+        android:textAlignment="center"
+        android:textColor="@android:color/secondary_text_dark"
+        android:textSize="14sp"
+        tools:text="@tools:sample/date/ddmmyy"></TextView>
+
+</RelativeLayout>

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">TaskList</string>
+    <string name="tab_text_1">Liste des taches</string>
+    <string name="tab_text_2">Ajouter</string>
+    <string name="tab_text_3">Calendrier</string>
+</resources>
