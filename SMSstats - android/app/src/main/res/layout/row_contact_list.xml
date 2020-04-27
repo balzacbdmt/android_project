@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp" >
+
+    <TextView
+        android:text="@string/lorem_ipsum"
+        android:id="@+id/row_contact_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:textColor="@color/text_color"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:text="@string/lorem_ipsum"
+        android:id="@+id/row_contact_numberPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/row_contact_name"
+        android:textColor="@color/text_color"
+        android:textSize="14sp" />
+
+    <TextView
+        android:text="@string/lorem_ipsum"
+        android:id="@+id/row_contact_smsCount"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:textAlignment="textEnd"
+        android:textColor="@color/text_color"
+        android:textSize="14sp" />
+
+    <TextView
+        android:text="@string/lorem_ipsum"
+        android:id="@+id/row_contact_CallsCount"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="25dip"
+        android:textAlignment="textEnd"
+        android:textColor="@color/text_color"
+        android:textSize="14sp" />
+
+</RelativeLayout>

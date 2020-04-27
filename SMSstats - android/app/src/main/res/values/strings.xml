@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">SMSstats</string>
+    <string name="tab_contactStats_title">Contacts &amp; stats</string>
+    <string name="tab_smsCheck_title">SMS check</string>
+    <string name="tab_param_title">Parameters</string>
+    <string name="lorem_ipsum">Lorem ipsum</string>
+    <string name="permission_denied">Allow permission to get your contact list</string>
+    <string name="new_smstype">New sms type</string>
+    <string name="edit_smstype">Edit an sms type</string>
+    <string name="title">Title</string>
+    <string name="answer">Answer</string>
+    <string name="wr">When receive</string>
+    <string name="active">Active</string>
+    <string name="save">Save</string>
+    <string name="update">Update</string>
+    <string name="cancel">Cancel</string>
+    <string name="turn_on_auto_answer">Turn ON auto answer</string>
+    <string name="turn_off_auto_answer">Turn OFF auto answer</string>
+    <string name="new_bomber">Create an SMS bomber :D</string>
+    <string name="body">Body</string>
+    <string name="bomb">Bombard it.</string>
+    <string name="quantity">Quantity</string>
+    <string name="phone_number_victim">Phone number of your victim</string>
+</resources>
