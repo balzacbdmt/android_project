@@ -1,0 +1,80 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 10px;
+}
+
+.red {
+  color: red;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.green {
+  color: green;
+}
+
+.blue {
+  color: #61dafa;
+}
+
+button {
+  padding: 0.7em;
+  margin: 1em;
+  font-size: large;
+  color: #61dafa;
+  background-color: transparent;
+  border: 1px solid #61dafa;
+  border-radius: 5px;
+}
+
+button:hover {
+  color: white;
+  border-color: white;
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+}
+
+label {
+  margin: auto 1em;
+  flex: 1;
+  font-size: large;
+  width: 8em;
+}
+
+input {
+  width: 5em;
+  margin: 10px;
+  padding: 0.7em;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid #61dafa;
+  border-radius: 5px;
+  color: white;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
