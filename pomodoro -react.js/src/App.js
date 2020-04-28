@@ -15,6 +15,9 @@ class App extends React.Component {
   }
 
   startTimer = () => {
+    if (this.state.started) {
+        return;
+    }
     if (this.state.timer === 0) {
       this.setState({
         started: true,
@@ -26,7 +29,7 @@ class App extends React.Component {
       });
     }    
     this.timer = setInterval(() => {
-      this.setState({ timer: this.state.timer - 100 });
+      this.setState({ timer: this.state.timer - 10 });
       if (this.state.timer < this.state.pauseTime) {
         this.setState({ pause: true })
       } else {
@@ -107,7 +110,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h2>Pomorodo</h2>
+          <h2>Pomodoro</h2>
           {compteur}
           <h4>{status}</h4>
           <div class="form">
