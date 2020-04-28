@@ -10,7 +10,7 @@ class App extends React.Component {
       pause: false,
       timer: 0,
       pauseTime: 300000,
-      workTime: 300000
+      workTime: 1500000
     }
   }
 
@@ -90,7 +90,7 @@ class App extends React.Component {
     const started = this.state.started
     const { timer } = this.state
     let seconds = ("0" + (Math.floor(timer / 1000) % 60)).slice(-2)
-    let minutes = ("0" + (Math.floor(timer / 60000) % 60)).slice(-2); 
+    let minutes = Math.floor(timer / 60000)
     let status
     if (pause) {
       status = <h3 class="green">Pause time :D</h3>
