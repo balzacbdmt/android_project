@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -10,10 +9,6 @@ import SearchMovie from './SearchMovie'
 import Settings from './Settings'
 
 export default class Home extends Component {
-
-    constructor(props) {
-        super(props)
-    }
 
     render() {
 
@@ -36,13 +31,13 @@ export default class Home extends Component {
                 </Tab.Screen>
                 <Tab.Screen 
                     name="SearchMovie" 
-                    component={SearchMovie}
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons name="database-search" color={'#2196F3'} size={40} />
                         ),
-                    }}
-                />
+                    }}>
+                    {props => <SearchMovie {...props} listMovie={this.props.listMovie} />}
+                </Tab.Screen>
                 <Tab.Screen 
                     name="AddMovie" 
                     component={AddMovie}
@@ -54,17 +49,14 @@ export default class Home extends Component {
                 />
                 <Tab.Screen 
                     name="Settings" 
-                    component={Settings}
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons name="settings" color={'#2196F3'} size={40} />
                         ),
-                    }}
-                />
+                    }}>
+                    {props => <Settings {...props} username={this.props.username} />}
+                </Tab.Screen>
             </Tab.Navigator>     
         )
     }
 }
-
-const styles = StyleSheet.create({
-});

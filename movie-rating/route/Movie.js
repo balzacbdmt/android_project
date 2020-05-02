@@ -26,6 +26,11 @@ export default class Movie extends Component {
             adding : this.props.route.params.adding
         })
 
+        if (this.props.checkExistence(item.id)  && this.props.route.params.adding) {
+            //TODO "toast" to advert user already in list
+            this.props.navigation.goBack()
+        }
+
         if (!item.id) {
             this.props.navigation.goBack()
             alert("Error "+item.id)
@@ -41,7 +46,6 @@ export default class Movie extends Component {
                         infos: responseJson
                     })
                 }, 2000)
-
             })
             .catch(error => console.log(error))
 
@@ -54,7 +58,7 @@ export default class Movie extends Component {
     }
 
     submitBtn = () => {
-        //if adding: add to list
+        // if adding: add to list
         if (this.state.adding) {
             let movie = {item: this.state.item, rate: this.state.rate, commentary: this.state.commentary}
             this.props.addMovie(movie)
@@ -62,7 +66,8 @@ export default class Movie extends Component {
         } 
         // else update the movie
         else {
-            //TODO update
+            this.props.updateMovie(this.state.item.id, this.state.rate, this.state.commentary)
+            this.props.navigation.goBack()
         }
     }
 
@@ -92,7 +97,6 @@ export default class Movie extends Component {
                 btnTxt = "Add to your list"
             } else {
                 btnTxt = "Update"
-                alert(item.title+item.id)
                 rmBtn =
                     <TouchableHighlight onPress={() => this.removeFromList(item.id)} style={styles.btn}>
                         <Text style={styles.txtBtn}>remove from list</Text>
@@ -111,7 +115,6 @@ export default class Movie extends Component {
                     <Text style={styles.title}>{item.title}</Text>
                     <Text style={styles.subtitle}>{infos.year}</Text>
                     <Text style={styles.subtitle}>{infos.type}</Text>
-                    {/* TODO end when API can be used */}
                     <TextInput
                         style={styles.input}
                         placeholder="Commentary"

@@ -10,20 +10,7 @@ export default class AddMovie extends Component {
         super(props)
         this.state = {
             name: "",
-            result: [{
-                "description": "(1987)",
-                "id": "tt0093870",
-                "image": "https://imdb-api.com/images/original/MV5BZWVlYzU2ZjQtZmNkMi00OTc3LTkwZmYtZDVjNmY4OWFmZGJlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_Ratio0.7273_AL_.jpg",
-                "resultType": "Title",
-                "title": "RoboCop RoboCop",
-              },
-              {
-                "description": "(2014)",
-                "id": "tt1234721",
-                "image": "https://imdb-api.com/images/original/MV5BMjAyOTUzMTcxN15BMl5BanBnXkFtZTgwMjkyOTc1MDE@._V1_Ratio0.7273_AL_.jpg",
-                "resultType": "Title",
-                "title": "RoboCop",
-              }],
+            result: [],
             loading: false
         }
     }

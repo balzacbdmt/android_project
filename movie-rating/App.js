@@ -20,37 +20,7 @@ export default class App extends Component {
       assetsLoaded: false,
       username: "",
       password: "",
-      listMovie: [{
-        "commentary": "Bof",
-        "item": {
-          "description": "(1987)",
-          "id": "22222222",
-          "image": "https://imdb-api.com/images/original/MV5BZWVlYzU2ZjQtZmNkMi00OTc3LTkwZmYtZDVjNmY4OWFmZGJlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_Ratio0.7273_AL_.jpg",
-          "resultType": "Title",
-          "title": "RoboCop1",
-        },
-        "rate": 3,
-      },{
-        "commentary": "Bof",
-        "item": {
-          "description": "(1987)",
-          "id": "111111111",
-          "image": "https://imdb-api.com/images/original/MV5BZWVlYzU2ZjQtZmNkMi00OTc3LTkwZmYtZDVjNmY4OWFmZGJlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_Ratio0.7273_AL_.jpg",
-          "resultType": "Title",
-          "title": "RoboCop2",
-        },
-        "rate": 3,
-      },{
-        "commentary": "Bof",
-        "item": {
-          "description": "(1987)",
-          "id": "3333333",
-          "image": "https://imdb-api.com/images/original/MV5BZWVlYzU2ZjQtZmNkMi00OTc3LTkwZmYtZDVjNmY4OWFmZGJlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_Ratio0.7273_AL_.jpg",
-          "resultType": "Title",
-          "title": "RoboCop3",
-        },
-        "rate": 3,
-      }]
+      listMovie: []
     }
   }
 
@@ -76,20 +46,33 @@ export default class App extends Component {
   
   addMovie = (movie) => {
     this.state.listMovie.push(movie)
-    console.log(this.state.listMovie)
   }
 
   updateMovie = (id, rate, commentary) => {
-    //TODO
+    this.state.listMovie.forEach(function(element) {
+      if (id === element.item.id) {
+        element.rate = rate
+        element.commentary = commentary
+      }
+    });
   }
 
   removeMovie = (id) => {
-    alert(id)
     this.state.listMovie.forEach(function(element, index, object) {
       if (id === element.item.id) {
         object.splice(index, 1)
       }
     });
+  }
+
+  checkExistence = (id) => {
+    let result = false
+    this.state.listMovie.forEach(function(element, index, object) {
+      if (id === element.item.id) {
+        result = true
+      }
+    });
+    return result
   }
   
   render() {
@@ -101,10 +84,10 @@ export default class App extends Component {
       return (
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Home">
-              {props => <Home {...props} listMovie={this.state.listMovie} />}
-            </Stack.Screen>
             <Stack.Screen name="Portail" component={Portail} />
+            <Stack.Screen name="Home">
+              {props => <Home {...props} listMovie={this.state.listMovie} username={this.state.username} />}
+            </Stack.Screen>
             <Stack.Screen name="Register">
               {props => <Register {...props} fillUser={this.fillUser} />}
             </Stack.Screen>
@@ -112,7 +95,12 @@ export default class App extends Component {
               {props => <Login {...props} tryConnect={this.tryConnect} />}
             </Stack.Screen>
             <Stack.Screen name="Movie">
-              {props => <Movie {...props} addMovie={this.addMovie} removeMovie={this.removeMovie} listMovie={this.state.listMovie} />}
+              {props => <Movie {...props} 
+                addMovie={this.addMovie} 
+                updateMovie={this.updateMovie}
+                removeMovie={this.removeMovie} 
+                checkExistence={this.checkExistence} 
+                listMovie={this.state.listMovie} />}
             </Stack.Screen>
           </Stack.Navigator>
         </NavigationContainer>
