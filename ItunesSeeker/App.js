@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Provider } from 'react-redux';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
@@ -8,40 +9,45 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import AddElement from './route/AddElement';
 import ListElement from './route/ListElement';
 
+import SearchReducer from './store/SearchReducer';
+import Store from './store/configureStore';
+
 export default class App extends Component {
 
   render() {
 
       return (
-        <NavigationContainer>
-          <Tab.Navigator
-              initialRouteName = 'ListMovies'
-              tabBarOptions = {{
-                showIcon: true,
-                showLabel: false,
-                activeBackgroundColor: '#232323',
-                inactiveBackgroundColor: '#232323'
-              }}>
-              <Tab.Screen 
-                  name="ListMovies" 
-                  options={{
-                      tabBarIcon: ({ color, size }) => (
-                          <MaterialCommunityIcons name="magnify-plus-outline" color={'#FFEC00'} size={40} />
-                      ),
-                  }}>
-                  {props => <AddElement {...props} />}
-              </Tab.Screen>
-              <Tab.Screen 
-                  name="SearchMovie" 
-                  options={{
-                      tabBarIcon: ({ color, size }) => (
-                          <MaterialCommunityIcons name="format-list-bulleted" color={'#FFEC00'} size={40} />
-                      ),
-                  }}>
-                  {props => <ListElement {...props} />}
-              </Tab.Screen>
-          </Tab.Navigator>     
-        </NavigationContainer>
+        <Provider store={Store}>
+          <NavigationContainer>
+            <Tab.Navigator
+                initialRouteName = 'ListMovies'
+                tabBarOptions = {{
+                  showIcon: true,
+                  showLabel: false,
+                  activeBackgroundColor: '#232323',
+                  inactiveBackgroundColor: '#232323'
+                }}>
+                <Tab.Screen 
+                    name="ListMovies" 
+                    options={{
+                        tabBarIcon: ({ color, size }) => (
+                            <MaterialCommunityIcons name="magnify-plus-outline" color={'#FFEC00'} size={40} />
+                        ),
+                    }}>
+                    {props => <AddElement {...props} />}
+                </Tab.Screen>
+                <Tab.Screen 
+                    name="SearchMovie" 
+                    options={{
+                        tabBarIcon: ({ color, size }) => (
+                            <MaterialCommunityIcons name="format-list-bulleted" color={'#FFEC00'} size={40} />
+                        ),
+                    }}>
+                    {props => <ListElement {...props} />}
+                </Tab.Screen>
+            </Tab.Navigator>     
+          </NavigationContainer>
+        </Provider>
       )
   }
 }
