@@ -36,7 +36,7 @@ class SearchBar extends Component {
                 <View style={styles.searchContainer}>
                     <TextInput
                         style={styles.input}
-                        placeholder="enter ..."
+                        placeholder="enter artist, track or album..."
                         onChangeText={text => this.toggleValue(text)}
                         value={this.state.value}
                     />

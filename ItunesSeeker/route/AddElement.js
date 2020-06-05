@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, ActivityIndicator, FlatList, TouchableHighlight
 import { connect } from 'react-redux';
 
 import SearchBar from '../components/SearchBar';
-import Element from '../components/Element';
+import RowElement from '../components/RowElement';
 
 class AddElement extends Component {
 
@@ -15,7 +15,7 @@ class AddElement extends Component {
         }
     }
 
-    searchMovie = () => {
+    searchElement = () => {
         if (!this.props.search.value) {
             this.setState({result: null})
             const search = { type: "SEARCH", value: false }
@@ -23,7 +23,7 @@ class AddElement extends Component {
             return;
         }
 
-        fetch("https://itunes.apple.com/search?country=fr&term="+this.props.search.value+"&entity="+this.props.search.listTypeItunes[this.props.search.type])
+        fetch("https://itunes.apple.com/search?term="+this.props.search.value+"&entity="+this.props.search.listTypeItunes[this.props.search.type])
             .then(response => response.json())
             .then((responseJson) => {
                 setTimeout(() => {
@@ -38,8 +38,12 @@ class AddElement extends Component {
             .catch(error => console.log(error))
     }
 
+    openElement = (item) => {
+        this.props.navigation.navigate('Element', {element: item, adding: true});
+    }
+
     render() {
-        this.props.search.search ? this.searchMovie() : null;
+        this.props.search.search ? this.searchElement() : null;
 
         const result = this.state.result;
 
@@ -53,20 +57,12 @@ class AddElement extends Component {
                     data={result}
                     renderItem={({ item }) => {
                         return(
-                            <TouchableHighlight onPress={alert}>
-                                <Element
-                                    wrapperType={item.wrapperType}
-                                    trackName={item.trackName}
-                                    collectionName={item.collectionName}
-                                    artistName={item.artistName}
-                                    artworkUrl100={item.artworkUrl100}
-                                    releaseDate={item.releaseDate}
-                                    primaryGenreName={item.primaryGenreName}
-                                />                                  
+                            <TouchableHighlight onPress={() => this.openElement(item)}>
+                                <RowElement element={item} />                                  
                             </TouchableHighlight>
                         )}
                     }                        
-                    keyExtractor={item => item.id}
+                    keyExtractor={(item, index)=> index}
                 />
                 }
             </View>
@@ -84,8 +80,8 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#3D3D3D',
         flex: 1,
-        marginTop: Constants.statusBarHeight
+        paddingTop: Constants.statusBarHeight
     },
 });
 
-export default connect(mapStateToProps)(AddElement)
+export default connect(mapStateToProps)(AddElement);

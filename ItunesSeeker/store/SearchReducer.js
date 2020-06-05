@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-
 const INITIAL_STATE = {
   listType: ["Artist", "Track", "Album"],
   listTypeItunes: ["allArtist", "allTrack", "album"],
@@ -11,7 +9,7 @@ const INITIAL_STATE = {
   // 2 => search by album
 };
 
-const SearchReducer = (state = INITIAL_STATE, action) => {
+export default function SearchReducer (state = INITIAL_STATE, action) {
   let nextState;
   switch (action.type) {
     case 'TOGGLE_TYPE':
@@ -36,7 +34,3 @@ const SearchReducer = (state = INITIAL_STATE, action) => {
       return state
   }
 };
-
-export default combineReducers({
-  search: SearchReducer,
-});

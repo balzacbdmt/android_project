@@ -1,4 +1,10 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import SearchReducer from './SearchReducer';
+import FavoriteReducer from './FavoriteReducer';
 
-export default createStore(SearchReducer)
+export default createStore(
+    combineReducers({
+        search: SearchReducer,
+        favorite: FavoriteReducer
+    })
+);
